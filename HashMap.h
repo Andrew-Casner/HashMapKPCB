@@ -18,7 +18,7 @@ class HashMap {
 		struct mapNode(){
 			std::string key;
 			int value;
-			int *head;
-			int *tail;
+			mapNode *head;
+			mapNode *tail;
 		}
 }
