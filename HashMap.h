@@ -21,5 +21,6 @@ class HashMap{
 			mapNode *head;
 			mapNode *tail;
 		};
+		mapNode *hmap[];
 };
 #endif 

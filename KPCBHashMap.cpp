@@ -4,6 +4,6 @@
 #include "HashMap.cc"
 
 int main(int argc,char *argv[]){
-	HashMap hMap;
+	HashMap *hMap = new HashMap();
 }
 
