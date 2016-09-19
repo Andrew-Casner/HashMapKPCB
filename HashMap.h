@@ -20,5 +20,5 @@ class HashMap {
 			int value;
 			mapNode *head;
 			mapNode *tail;
-		}
+		};
 }
