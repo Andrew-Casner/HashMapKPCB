@@ -4,6 +4,21 @@
 #include <string>
 #include <iostream>
 
+// Struct mapNode
+struct mapNode{
+	std::string key;
+	int value;
+	mapNode *head;
+	mapNode *tail;
+	mapNode(){};
+	mapNode(std::string keyIN, int valueIN){
+		key = keyIN;
+		value = valueIN;
+		head =NULL;
+		tail =NULL;
+	};
+};
+
 // Class HashMap
 class HashMap{
 	public:
@@ -15,12 +30,6 @@ class HashMap{
 		float load();
 
 	private:
-		struct mapNode{
-			std::string key;
-			int value;
-			mapNode *head;
-			mapNode *tail;
-		};
-		mapNode *hmap[];
+		mapNode *hmap[128];
 };
 #endif 

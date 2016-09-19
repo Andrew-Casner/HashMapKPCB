@@ -2,10 +2,11 @@
 
 #include "HashMap.h" 
 #define SIZE 128
+
 HashMap::HashMap(){
-	// Create new array 
-	// this is where all key pair values will do stored in the hash map 
-	*hmap = new mapNode[SIZE];
+	for(int i = 0; i < SIZE; i++){
+		hmap[i] = NULL;
+	}
 }
 
 HashMap::~HashMap(){
@@ -14,9 +15,14 @@ HashMap::~HashMap(){
 	for( int i = 0; i < SIZE; i++){
 		// Set the current node to the first node in the linked list
 		mapNode *myNode = hmap[i];
-		while(myNode){
-			myNode = myNode->tail;
-			delete myNode->head;
+		while(myNode!=NULL){
+			if(myNode->tail!=NULL){
+				myNode = myNode->tail;
+				delete myNode->head;
+			}
+			else{
+				myNode = NULL;
+			}
 			
 		}
 

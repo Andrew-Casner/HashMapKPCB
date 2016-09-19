@@ -5,5 +5,6 @@
 
 int main(int argc,char *argv[]){
 	HashMap *hMap = new HashMap();
+//	delete hMap;
 }
 
