@@ -3,7 +3,7 @@
 #include <iostream>
 #include "HashMap.cc"
 
-int main(int argc, int *argv[]){
-	HashMap hMap = new HashMap();
+int main(int argc,char *argv[]){
+	HashMap hMap;
 }
 
