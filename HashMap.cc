@@ -14,6 +14,12 @@ HashMap::~HashMap(){
 	for( int i = 0; i < SIZE; i++){
 		// Set the current node to the first node in the linked list
 		mapNode *myNode = hmap[i];
+		while(myNode){
+			myNode = myNode->tail;
+			delete myNode->head;
+			
+		}
+
 	}	
 	// after all of the values in the map have been removed, remove the Hash Map
 	delete hmap;
