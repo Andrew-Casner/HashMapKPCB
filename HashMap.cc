@@ -1,5 +1,7 @@
 // Andrew Casner HashMap.cc class file
 
+#include "HashMap.h" 
+
 HashMap::HashMap(){
 
 }

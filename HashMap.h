@@ -1,8 +1,8 @@
 // Andrew Casner KPCB Engineering Fellows Appliction Fall 2016
 
 #include <stdlib>
+#include <string>
 #include <iostream>
-#include "HashMap.cc"
 
 // Class HashMap
 class HashMap {
@@ -21,4 +21,4 @@ class HashMap {
 			mapNode *head;
 			mapNode *tail;
 		};
-}
+};
