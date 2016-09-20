@@ -7,11 +7,11 @@
 // Struct mapNode
 struct mapNode{
 	std::string key;
-	int value;
+	int *value;
 	mapNode *head;
 	mapNode *tail;
 	mapNode(){};
-	mapNode(std::string keyIN, int valueIN){
+	mapNode(std::string keyIN, int *valueIN){
 		key = keyIN;
 		value = valueIN;
 		head =NULL;
@@ -30,6 +30,7 @@ class HashMap{
 		float load();
 
 	private:
-		mapNode *hmap[128];
+		int hashSum(std::string,int);
+		mapNode * hmap[128];
 };
 #endif 
