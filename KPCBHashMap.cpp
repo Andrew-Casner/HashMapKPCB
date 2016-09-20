@@ -5,6 +5,10 @@
 
 int main(int argc,char *argv[]){
 	HashMap *hMap = new HashMap();
-//	delete hMap;
+	int a = 10;
+	int b = 11;
+	hMap->set("hi", &a);
+	hMap->set("here", &b);
+	std::cout << hMap->get("here") << std::endl;
 }
 
