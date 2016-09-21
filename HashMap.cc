@@ -119,6 +119,9 @@ float HashMap::load(){
 }
 
 int HashMap::hashSum(std::string keyIN, int tableSize){
+	// Basic Hash function that sums up all of the ASCII values
+	// of the chars in the string and then mods them by the 
+	// length of the hash map
 	tableSize--;
 	int sum = 0;
 	for(int i = 0; i < keyIN.length(); i++){
