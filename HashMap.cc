@@ -22,11 +22,12 @@ bool HashMap::set(std::string keyIN, int * valueIN){
 	mapNode *temp;
 	// Create Hash Element
 	mapNode * newNode = new mapNode(keyIN, valueIN);
-	int index = hashSum(newNode->key, SIZE);
+	int index = hashSum(newNode->key, size);
 	// Insert into table
 	if(hmap[index].value == NULL){
 		hmap[index] = *newNode;
 		std::cout << "Here" << std::endl;
+		elements++;
 		return true;
 	}
 	else {
@@ -37,6 +38,7 @@ bool HashMap::set(std::string keyIN, int * valueIN){
 		temp->tail = newNode;
 		temp->tail->head = temp;
 		std::cout << "Here 2" << std::endl;
+		elements++;
 		return true;
 	}
 	// Failed to creatd newNode
@@ -49,7 +51,7 @@ int* HashMap::get(std::string keyIN){
 	int *value;
 	mapNode *temp;
 	// Get Element
-	int i = hashSum(keyIN, SIZE);
+	int i = hashSum(keyIN, size);
 	if(hmap[i].value != NULL){
 		if(hmap[i].key == keyIN){
 			value = hmap[i].value;
@@ -81,7 +83,7 @@ int* HashMap::deleteNode(std::string keyIN){
 	int *value;
 	mapNode *temp;
 	// Get Element
-	int i = hashSum(keyIN, SIZE);
+	int i = hashSum(keyIN, size);
 	if(hmap[i].value != NULL){
 		if(hmap[i].key == keyIN){
 			value = hmap[i].value;
@@ -103,6 +105,7 @@ int* HashMap::deleteNode(std::string keyIN){
 		}
 	}
 	if(found){
+		elements--;
 		return value;
 	}
 	else{
@@ -111,10 +114,16 @@ int* HashMap::deleteNode(std::string keyIN){
 }
 
 float HashMap::load(){
-	float re;
-	return re;
+	float load = elements/size;
+	return load;
 }
 
 int HashMap::hashSum(std::string keyIN, int tableSize){
-	return 1;
+	tableSize--;
+	int sum = 0;
+	for(int i = 0; i < keyIN.length(); i++){
+		sum = sum + keyIN.at(i);
+	}
+	sum = sum % tableSize;
+	return sum;
 }

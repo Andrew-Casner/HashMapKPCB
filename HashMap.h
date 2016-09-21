@@ -32,6 +32,7 @@ class HashMap{
 
 	private:
 		int size;
+		int elements;
 		mapNode * hmap;
 		int hashSum(std::string,int);
 };
