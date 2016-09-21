@@ -10,5 +10,8 @@ int main(int argc,char *argv[]){
 	hMap->set("hi", &a);
 	hMap->set("here", &b);
 	std::cout << hMap->get("here") << std::endl;
+	std::cout << hMap->deleteNode("here") << std::endl;
+	std::cout << hMap->get("here") << std::endl;
+
 }
 

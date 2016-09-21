@@ -1,4 +1,4 @@
-// Andrew Casner KPCB Engineering Fellows Appliction Fall 2016
+// Andrew Casner KPCB Engineering Fellows Appliction Fall 201
 #ifndef HASHMAP_H
 #define HASHMAP_H
 #include <string>
@@ -30,7 +30,8 @@ class HashMap{
 		float load();
 
 	private:
+		int size;
+		mapNode * hmap;
 		int hashSum(std::string,int);
-		mapNode * hmap[128];
 };
 #endif 

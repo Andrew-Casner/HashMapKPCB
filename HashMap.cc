@@ -4,10 +4,13 @@
 #define SIZE 128
 
 HashMap::HashMap(){
-	//set all spots to NULL
-	for(int i = 0; i < SIZE; i++){
-		hmap[i] = NULL; 
-	}
+	// Default Size
+	hmap = new mapNode[SIZE]; 
+}
+
+HashMap::HashMap(int sizeIN){
+	size = sizeIN;
+	hmap = new mapNode[size]; 
 }
 
 HashMap::~HashMap(){
@@ -21,13 +24,13 @@ bool HashMap::set(std::string keyIN, int * valueIN){
 	mapNode * newNode = new mapNode(keyIN, valueIN);
 	int index = hashSum(newNode->key, SIZE);
 	// Insert into table
-	if(hmap[index] == NULL){
-		hmap[index] = newNode;
+	if(hmap[index].value == NULL){
+		hmap[index] = *newNode;
 		std::cout << "Here" << std::endl;
 		return true;
 	}
 	else {
-		temp = hmap[index];
+		temp = &hmap[index];
 		while(temp->tail != NULL){
 			temp = temp->tail;
 		}	
@@ -41,28 +44,25 @@ bool HashMap::set(std::string keyIN, int * valueIN){
 }
 
 int* HashMap::get(std::string keyIN){
-// IM DUMB AND DIDINT OPTIMIZE IT NEED TO GO BACK AND DO THAT
 	// Helper variables
 	bool found = !true;
 	int *value;
 	mapNode *temp;
 	// Get Element
-	for(int i = 0; i < SIZE;i++){
-		if(hmap[i] != NULL){
-			if(hmap[i]->key == keyIN){
-				value = hmap[i]->value;
-				found = true;
-				break;
-			}
-			else{
-				temp = hmap[i];
-				while(temp->tail != NULL){
-					temp = temp->tail;
-					if(temp->key == keyIN){
-						value = hmap[i]->value;
-						found = true;
-						break;
-					}
+	int i = hashSum(keyIN, SIZE);
+	if(hmap[i].value != NULL){
+		if(hmap[i].key == keyIN){
+			value = hmap[i].value;
+			found = true;
+		}
+		else{
+			temp = &hmap[i];
+			while(temp->tail != NULL){
+				temp = temp->tail;
+				if(temp->key == keyIN){
+					value = temp->value;
+					found = true;
+					break;
 				}
 			}
 		}
@@ -76,8 +76,38 @@ int* HashMap::get(std::string keyIN){
 }
 
 int* HashMap::deleteNode(std::string keyIN){
-	int* re;
-	return re;
+	// Helper variables
+	bool found = !true;
+	int *value;
+	mapNode *temp;
+	// Get Element
+	int i = hashSum(keyIN, SIZE);
+	if(hmap[i].value != NULL){
+		if(hmap[i].key == keyIN){
+			value = hmap[i].value;
+			found = true;
+		}
+		else{
+			temp = &hmap[i];
+			while(temp->tail != NULL){
+				temp = temp->tail;
+				if(temp->key == keyIN){
+					value = temp->value;
+					found = true;
+					// Delete node
+					temp->head->tail = temp->tail;
+					delete temp;
+					break;
+				}
+			}
+		}
+	}
+	if(found){
+		return value;
+	}
+	else{
+		return NULL;
+	}
 }
 
 float HashMap::load(){
