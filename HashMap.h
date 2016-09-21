@@ -23,6 +23,7 @@ struct mapNode{
 class HashMap{
 	public:
 		HashMap();
+		HashMap(int);
 		~HashMap();
 		bool set(std::string, int*);
 		int* get(std::string);

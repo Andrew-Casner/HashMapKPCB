@@ -4,7 +4,8 @@
 #include "HashMap.cc"
 
 int main(int argc,char *argv[]){
-	HashMap *hMap = new HashMap();
+	int size = 64;
+	HashMap *hMap = new HashMap(size);
 	int a = 10;
 	int b = 11;
 	hMap->set("hi", &a);
