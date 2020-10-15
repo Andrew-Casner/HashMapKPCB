@@ -12,4 +12,4 @@ boolean set(key, value): stores the given key/value pair in the hash map. Return
 
 - float load(): return a float value representing the load factor (`(items in hash map)/(size of hash map)`) of the data structure.   Since the size of the dat structure is fixed, this should never be greater than 1.  
 
-- If your language provides a built-in hashing function for strings (ex. `hashCode` in Java or `__hash__` in Python) you are welcome to use that. If not, you are welcome to do something naive, or use something you find online with proper attribution.  
+- If your language provides a built-in hashing function for strings (ex. `hashCode` in Java or `__hash__` in Python) you are welcome to use that. If not, you are welcome to do something naive, or something you find online with proper attribution.  
